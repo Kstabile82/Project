@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //call renderInput here       
    })
 })
-function renderInput() {
+function renderInput() {  
     
         //    if (input === 'holder') {
         //        console.log("Please make sure you complete all the fields.")
