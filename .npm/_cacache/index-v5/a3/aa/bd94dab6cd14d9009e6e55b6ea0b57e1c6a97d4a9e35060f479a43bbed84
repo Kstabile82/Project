@@ -1,0 +1,2 @@
+
+e98c05c49e4ebaba7c751bfc1b8804e09e080e6a	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/chai/-/chai-3.5.0.tgz","integrity":"sha1-TQJjewZ/6Vi9v906QOxW/vc3Mkc=","time":1626806483016,"size":88236,"metadata":{"url":"https://registry.npmjs.org/chai/-/chai-3.5.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Tue, 20 Jul 2021 18:41:20 GMT","etag":"\"a0300506dc858e5abd5c6066cc133559\"","last-modified":"Sat, 26 May 2018 19:40:16 GMT","vary":"Accept-Encoding"}}}

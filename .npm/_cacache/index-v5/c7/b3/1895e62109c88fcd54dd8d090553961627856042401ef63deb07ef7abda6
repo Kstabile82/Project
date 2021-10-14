@@ -1,0 +1,2 @@
+
+70529483d57e6d34b97c646d41cde69823c141a9	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/yallist/-/yallist-2.1.2.tgz","integrity":"sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=","time":1631461426571,"size":4239,"metadata":{"url":"https://registry.npmjs.org/yallist/-/yallist-2.1.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Sun, 12 Sep 2021 15:43:44 GMT","etag":"\"c75ab65aa7ee9067694839e685e3b39a\"","last-modified":"Sun, 27 May 2018 22:34:55 GMT","vary":"Accept-Encoding"}}}

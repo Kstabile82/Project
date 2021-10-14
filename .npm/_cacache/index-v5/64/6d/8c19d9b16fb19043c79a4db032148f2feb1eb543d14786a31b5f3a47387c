@@ -1,0 +1,2 @@
+
+dfab03b6a00ab7f6ccd057fba375940a60f38201	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz","integrity":"sha1-q259nYhqrKiwhbwzEreaGYQz8Oc=","time":1627082099497,"size":97710,"metadata":{"url":"https://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Fri, 23 Jul 2021 23:14:57 GMT","etag":"\"66d001eda5628c89ad7cdc410e9a46eb\"","last-modified":"Mon, 02 Mar 2020 19:21:33 GMT","vary":"Accept-Encoding"}}}

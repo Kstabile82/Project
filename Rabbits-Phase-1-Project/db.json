@@ -14,58 +14,60 @@
     {
       "id": 2,
       "species": "Marsh Rabbit",
+      "region": ["Eastern, Southern Coastal"],
       "color": "Brown",
       "size": "Small",
-      "eyes": "[]",
       "ears": "Short upright",
       "coat": "",
-      "region": ["Eastern, Southern Coastal"],
+      "eyes": "[]",
       "image": "URL" 
 
     },
     {
       "id": 3,
       "species": "Swamp Rabbit",
+      "region": ["South Central, Gulf Coast"],
       "color": "Brown",
       "size": "Small",
       "ears": "Short upright",
-      "eyes": [],
       "coat": "",
-      "region": ["South Central, Gulf Coast"],
+      "eyes": [],
       "image": "URL" 
 
     },
     {
       "id": 4,
       "species": "Eastern Cottontail",
+      "region": ["Northeast"],
       "color": ["Brown, Grayish brown"],
       "size": "Small",
-      "eyes": "Black",
-      "coat": "Agouti",
       "ears": "Upright & short",
+      "coat": "Agouti",
+      "eyes": "Black",
       "image": "URL" 
 
     },
     {
       "id": 5,
       "species": "Western Cottontail",
+      "region": "West", 
       "color": ["Brown/gray, Brown"],
       "size": "Small",
-      "eyes": "Black", 
-      "coat": "Agouti",
       "ears": "Upright & medium",
+      "coat": "Agouti",
+      "eyes": "Black", 
       "image": "URL" 
 
     },
     {
       "id": 6,
       "species": "New England Cottontail",
+      "region": "Midwest",
       "color": ["Brown/gray, Brown"],
       "size": "Small",
-      "eyes": "Black",
-      "coat": "Agouti",
       "ears": "Medium upright",
-      "region": "Midwest",
+      "coat": "Agouti",
+      "eyes": "Black",
       "image": "URL" 
     },
     {
@@ -82,53 +84,57 @@
     {
       "id": 8,
       "species": "Prairie Jackrabbit",
+      "region": ["Central, West"],
       "color": ["Grayish brown, Brown"],
       "size": "Large",
       "ears": "Tall upright",
+      "coat": "Agouti",
       "eyes": "Brown",
-      "region": ["Central, West"],
-      "image": "https://en.wikipedia.org/wiki/White-tailed_jackrabbit"
+      "image": "URL"
     },
     {
       "id": 9,
       "species": "Pygmy Rabbit",
+      "region": ["West, Midwest"],
       "color": "Grayish brown",
       "size": "Tiny",
-      "eyes": "Black",
       "ears": "Short upright",
       "coat": "Solid",
-      "region": ["West, Midwest"],
-      "image": "https://en.wikipedia.org/wiki/Pygmy_rabbit#/media/File:BRACHYLAGUS_IDAHOENSIS.jpg"
+      "eyes": "Black",
+      "image": "URL"
     },
     {
       "id": 10,
       "species": "White-tailed Jackrabbit",
+      "region": "West",
       "color": ["Brown, Grayish brown, Brown and White"],
       "size": "Large",
       "ears": "Upright & tall",
-      "eyes": "Brown",
       "coat": "Agouti",
-      "region": "West"
+      "eyes": "Brown",
+      "image": "URL"
     },
     {
       "id": 11,
       "species": "Black-tailed Jackrabbit",
-      "size": "Large",
+      "region": "Southwest",
       "color": ["Brown, Grayish brown, Brown & white"],
+      "size": "Large",
       "ears": "Upright & tall",
-      "eyes": "Brown",
       "coat": "Agouti",
-      "region": "Southwest"
+      "eyes": "Brown",
+      "image": "URL"
     },
     {
       "id": 12,  
       "species": "White sided Jackrabbit",
-      "color": ["Brown, Grayish brown, Brown & white"],
       "region": "Southwest",
+      "color": ["Brown, Grayish brown, Brown & white"],
       "size": "Large",
       "ears": "Tall upright",
+      "coat": "Agouti",
       "eyes": "Brown",
-      "coat": "Agouti"
+      "image": "URL"
     }
   ]
 }

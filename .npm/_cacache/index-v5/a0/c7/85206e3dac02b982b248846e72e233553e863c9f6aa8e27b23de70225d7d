@@ -1,0 +1,2 @@
+
+58f1c5525a76a330eb1d15348f64c42942f3b014	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/ultron/-/ultron-1.0.2.tgz","integrity":"sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=","time":1630895764108,"size":5106,"metadata":{"url":"https://registry.npmjs.org/ultron/-/ultron-1.0.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:00 GMT","etag":"\"90b2ff28cdadfdd5749786b1f6f8a82d\"","last-modified":"Sun, 27 May 2018 20:24:48 GMT","vary":"Accept-Encoding"}}}

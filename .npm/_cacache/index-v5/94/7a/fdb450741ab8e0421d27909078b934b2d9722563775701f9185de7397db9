@@ -1,0 +1,2 @@
+
+e5cc3199031b87ef8793e7d5a3448b6fce2de3a7	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/hawk/-/hawk-3.1.3.tgz","integrity":"sha1-B4REvXwWQLD+VA0sm3PVlnjo4cQ=","time":1630895775482,"size":121790,"metadata":{"url":"https://registry.npmjs.org/hawk/-/hawk-3.1.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"binary/octet-stream","date":"Mon, 06 Sep 2021 02:36:04 GMT","etag":"\"e88f6ac168e433c262d0098b502b187b\"","last-modified":"Tue, 05 Jun 2018 13:47:04 GMT","vary":"Accept-Encoding"}}}

@@ -1,0 +1,2 @@
+
+440bcb962171c61a5c1460616e32b4c917f77323	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/batch/-/batch-0.5.3.tgz","integrity":"sha1-PzQU84AyF0O/wQQvmoP/HVgk1GQ=","time":1630895770497,"size":3098,"metadata":{"url":"https://registry.npmjs.org/batch/-/batch-0.5.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:06 GMT","etag":"\"1a6f2e8c8c3f731d766e51350a0cbd09\"","last-modified":"Sat, 26 May 2018 18:11:48 GMT","vary":"Accept-Encoding"}}}

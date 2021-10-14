@@ -1,0 +1,2 @@
+
+3076d324d1cf43e6b615b8c6dbef3df42542b0d1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/cookie/-/cookie-0.3.1.tgz","integrity":"sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=","time":1630895769142,"size":5970,"metadata":{"url":"https://registry.npmjs.org/cookie/-/cookie-0.3.1.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:05 GMT","etag":"\"81d618718622f0d03f0cb33fc5e85f7a\"","last-modified":"Sat, 26 May 2018 20:50:33 GMT","vary":"Accept-Encoding"}}}

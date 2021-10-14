@@ -1,0 +1,2 @@
+
+c1b4e91e0a26bb15428e7611514ed196b7fdeea6	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/tfunk/-/tfunk-3.1.0.tgz","integrity":"sha1-OORBT8ZJd9h6/apy+sttKfgve1s=","time":1630895764633,"size":6606,"metadata":{"url":"https://registry.npmjs.org/tfunk/-/tfunk-3.1.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:00 GMT","etag":"\"0988e735c0e93d4f2b41c00ad16349f7\"","last-modified":"Sun, 27 May 2018 19:18:25 GMT","vary":"Accept-Encoding"}}}

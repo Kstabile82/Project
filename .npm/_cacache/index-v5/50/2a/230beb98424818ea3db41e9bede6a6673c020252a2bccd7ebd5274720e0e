@@ -1,0 +1,2 @@
+
+db8967aaa75c2fc3f1c4a9a42df3fd946967d707	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz","integrity":"sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=","time":1626824255756,"size":4991,"metadata":{"url":"https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Tue, 20 Jul 2021 23:37:35 GMT","etag":"\"21765e2a281e8baa6e50b5e57578d232\"","last-modified":"Sun, 27 May 2018 08:12:45 GMT","vary":"Accept-Encoding"}}}

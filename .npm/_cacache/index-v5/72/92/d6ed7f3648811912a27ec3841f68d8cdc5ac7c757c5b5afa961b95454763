@@ -1,0 +1,2 @@
+
+519682365d55e74e3f5c81dafdbfd5e3a01a9103	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/sshpk/-/sshpk-1.14.2.tgz","integrity":"sha1-xvxhZIo9nE52T9P8306hBeSSupg=","time":1626824256663,"size":49015,"metadata":{"url":"https://registry.npmjs.org/sshpk/-/sshpk-1.14.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Tue, 20 Jul 2021 23:37:35 GMT","etag":"\"cc1ba1a6c97a9ba0ba66d01854b6edde\"","last-modified":"Fri, 07 Sep 2018 17:39:31 GMT","vary":"Accept-Encoding"}}}

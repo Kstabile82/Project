@@ -1,0 +1,2 @@
+
+1cdbb64c651209340a4226cd98c62c78dbe74a3d	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/hoek/-/hoek-2.16.3.tgz","integrity":"sha1-ILt0A9POo5jpHcRxCo/xuCdKJe0=","time":1630895773814,"size":65204,"metadata":{"url":"https://registry.npmjs.org/hoek/-/hoek-2.16.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:04 GMT","etag":"\"accc15c9bdfa6e1e489fd35b26d8ae8a\"","last-modified":"Thu, 14 Feb 2019 16:00:51 GMT","vary":"Accept-Encoding"}}}

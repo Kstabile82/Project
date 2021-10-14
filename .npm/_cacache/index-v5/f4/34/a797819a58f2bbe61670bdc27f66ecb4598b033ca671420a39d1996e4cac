@@ -1,0 +1,2 @@
+
+6c9dde9ea28ff0ac40eb099506efdfdfa28302c0	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/jsdom/-/jsdom-9.2.1.tgz","integrity":"sha1-Bhy8zG5WPRRJP2U6+S6tw8DTmRA=","time":1627082100034,"size":187057,"metadata":{"url":"https://registry.npmjs.org/jsdom/-/jsdom-9.2.1.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Fri, 23 Jul 2021 23:14:58 GMT","etag":"\"b5f6efbda6ecb2bcb3b5261f1b8075ba\"","last-modified":"Sun, 27 May 2018 05:36:23 GMT","vary":"Accept-Encoding"}}}

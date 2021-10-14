@@ -1,0 +1,2 @@
+
+644147dbd341bf96beff9af7756f8aaff59a2303	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/json3/-/json3-3.3.2.tgz","integrity":"sha1-PAQ0dD35Pi9cQq7nsZvLSDV19OE=","time":1630895770384,"size":19398,"metadata":{"url":"https://registry.npmjs.org/json3/-/json3-3.3.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:03 GMT","etag":"\"250f8538e293b6f22175b642dc14bd26\"","last-modified":"Sun, 27 May 2018 05:41:50 GMT","vary":"Accept-Encoding"}}}
