@@ -1,0 +1,2 @@
+
+03c3243757168b431dfb4895cabb2cbac1312f83	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/ajv/-/ajv-4.11.8.tgz","integrity":"sha1-gv+wKynmYq5TvcIK8VlHcGc5xTY=","time":1630895777877,"size":507124,"metadata":{"url":"https://registry.npmjs.org/ajv/-/ajv-4.11.8.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:06 GMT","etag":"\"b4d4521d612fd1a9c228339a1eaa98b9\"","last-modified":"Sat, 26 May 2018 16:22:19 GMT","vary":"Accept-Encoding"}}}

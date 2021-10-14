@@ -1,0 +1,2 @@
+
+1aab1b2882694d0d9dc99fa90824384b5bb70dae	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/yeast/-/yeast-0.1.2.tgz","integrity":"sha1-AI4G2AlDIMNy28L47XagymyKxBk=","time":1630895765930,"size":3073,"metadata":{"url":"https://registry.npmjs.org/yeast/-/yeast-0.1.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 06 Sep 2021 02:36:00 GMT","etag":"\"84327f7f32def0537749732ce0c2147d\"","last-modified":"Sun, 27 May 2018 22:37:37 GMT","vary":"Accept-Encoding"}}}

@@ -1,0 +1,2 @@
+
+6db692bd40367bbd705d54d7a597e6bd5d7b0ccd	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/steno/-/steno-0.4.4.tgz","integrity":"sha1-BxEFvfwobmYVwEA8J+nXtdy4Vcs=","time":1631324243774,"size":2812,"metadata":{"url":"https://registry.npmjs.org/steno/-/steno-0.4.4.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, immutable, max-age=31557600","content-type":"application/octet-stream","date":"Sat, 11 Sep 2021 01:37:23 GMT","etag":"\"ceae793fe39f76a33bafdb5b2c25150b\"","last-modified":"Sun, 27 May 2018 18:17:13 GMT","vary":"Accept-Encoding"}}}

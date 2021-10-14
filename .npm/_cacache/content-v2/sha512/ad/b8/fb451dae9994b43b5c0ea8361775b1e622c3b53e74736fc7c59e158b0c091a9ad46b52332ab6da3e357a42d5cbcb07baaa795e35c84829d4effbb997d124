@@ -1,0 +1,1 @@
+{"source":528,"name":"parsejson","dependency":"parsejson","title":"Regular Expression Denial of Service","url":"https://npmjs.com/advisories/528","severity":"high","versions":["0.0.1","0.0.2","0.0.3"],"vulnerableVersions":["0.0.1","0.0.2","0.0.3"],"range":"<=0.0.3","id":"G3AW2RwCugvXOS2cwvQufj0oSNteT3HpwxoBPobrS367lRlQLWgut6W9TaO8Y3t6d+qUb8M9q5aDTLPUCS97PA=="}

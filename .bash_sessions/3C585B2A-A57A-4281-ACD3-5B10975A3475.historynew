@@ -1,0 +1,3 @@
+`chsh -s /bin/zsh`
+chsh -s/bin/zsh
+echo /usr/local/bin/zsh | sudo tee -a/etc/shells
