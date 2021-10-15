@@ -24,13 +24,14 @@ function eliminators(inputObj) {
 function getRabbits() {
    fetch("http://localhost:3000/rabbits") 
    .then(response => response.json()) 
-   .then(rabbits => rabbits.filter(rabbit => { //calling renderRabbits here is whats making it repeat 9x
-   returnMatches(rabbit);
-   //renderRabbit(); 
-}))
+   .then(rabbits => {
+      returnMatches(rabbits)
+      renderRabbit(matchArr)
+   })
 }
 
-function returnMatches(rabbit) {
+function returnMatches(rabbits) {
+   rabbits.filter(rabbit => { 
    let match = false; 
       for (let key in rabbit) { 
          for (let key in inputObj) {    
@@ -50,6 +51,7 @@ function returnMatches(rabbit) {
       }
       else {
       }
+   })
 }
 document.addEventListener('DOMContentLoaded', () => {
    getInput();
@@ -68,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
        errorMessage(); 
    })
 })
-
 function getInput() {
    let categories = document.getElementsByTagName("select");
    for (let i = 0; i < categories.length; i++) {
@@ -77,15 +78,28 @@ function getInput() {
          let input = category.options[category.selectedIndex].value;
          inputObj[`${category.id}`] = input;
      })
-     
    }
 } 
-function renderRabbit(matchArr) {  
+function renderRabbit(matchArr) { 
    if (matchArr.length === 1) { //this is printing even when matchArr is 2, maybe calling this fn in wrong spot
       console.log(`We've got a match! It sounds like a ${matchArr}.`)
+      //searchWiki(matchArr[0]);
    }
-   else if (matchArr.length === 2) {
-      console.log("We found multiple match possibilities: " + matchArr[0] + " and a " + matchArr[1] +"."); 
+   else if (matchArr.length > 1) {
+      let matchString = "We found multiple match possibilities: "; 
+      matchArr.map(idx => {
+         //iterate through matchArr
+         if (matchArr.indexOf(idx) === matchArr.length-1) {
+            matchString += "and " + idx + ".";
+            //identifies whether it's the last. 
+            console.log(matchString);
+
+         }
+         else {
+            matchString += `${idx}, `
+            //else just continue adding idx to the string.
+         }
+      })
    }
 }
 //return fetch request on the matches. append wiki frame and image into html? 
