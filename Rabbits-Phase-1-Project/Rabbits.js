@@ -88,6 +88,7 @@ function renderRabbit(matchArr) {
    else if (matchArr.length > 1) {
       let matchString = "We found multiple match possibilities: "; 
       matchArr.map(idx => {
+         //searchWiki(idx);
          //iterate through matchArr
          if (matchArr.indexOf(idx) === matchArr.length-1) {
             matchString += "and " + idx + ".";
