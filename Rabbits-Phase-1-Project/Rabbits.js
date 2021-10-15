@@ -5,7 +5,6 @@ let collection = document.getElementsByTagName('select');
 let domesticStr = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and is at risk. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
 let wildStr = `It sounds like you're looking at a wild rabbit. Here are some that matched your input so that you can compare and determine!`
 let maybeEither = `It sounds like you're looking at a wild rabbit, but it's difficult to confirm based on the data provided. Here are some wild rabbits that match your input so that you can compare. If you think it's domestic, please try reaching out to an animal rescue local to your area to see if they can help determine and get it to safety.`
-
 function errorMessage()  {   //why does this only work up here and not down with other functions?  
    if (Object.keys(inputObj).length < 7 ) { //try e.target here to get length of collection
       console.log("Please make sure you complete all the fields."); 
@@ -25,18 +24,14 @@ function eliminators(inputObj) {
 function getRabbits() {
    fetch("http://localhost:3000/rabbits") 
    .then(response => response.json()) 
-   .then(rabbits => rabbits.filter(rabbit => { 
+   .then(rabbits => rabbits.filter(rabbit => { //calling renderRabbits here is whats making it repeat 9x
    returnMatches(rabbit);
-   renderRabbit(); 
+   //renderRabbit(); 
 }))
 }
 
 function returnMatches(rabbit) {
    let match = false; 
-   // rabbit.map(key => {    
-   //    inputObj.map(key => { 
-   //    })
-   // })
       for (let key in rabbit) { 
          for (let key in inputObj) {    
             if (rabbit[key] === "id" || key === "image" || key === "species") {
@@ -51,7 +46,7 @@ function returnMatches(rabbit) {
          }   
       }
       if (match === true) {
-         matchArr.push(rabbit.species)
+        matchArr.push(rabbit.species)
       }
       else {
       }
@@ -84,10 +79,9 @@ function getInput() {
      })
      
    }
-}
-      
-function renderRabbit() {
-   if (matchArr.length === 1) {
+} 
+function renderRabbit(matchArr) {  
+   if (matchArr.length === 1) { //this is printing even when matchArr is 2, maybe calling this fn in wrong spot
       console.log(`We've got a match! It sounds like a ${matchArr}.`)
    }
    else if (matchArr.length === 2) {
@@ -106,3 +100,77 @@ function renderRabbit() {
 //event listener on select form submission. if option.value === holder, they didn't answer everything, error message. else, execute rabbitInput function
 //rabbitInput fn saves option.value to a variable named ${category} and push it into newObj
 //compare newObj to stored ones -- call comparisonFn
+
+
+//https://en.wikipedia.org/w/api.php?action=query&prop=value&. .& format=json
+//. . srsearch=Craig%20Noone indicates the page title or content to search for. The %20 indicates a space character in a URL.
+//If you want plain text only, use TextExtracts: http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&titles=Unix
+//https://en.wikipedia.org/wiki/Snowshoe_hare
+//https://en.wikipedia.org/w/api.php?action=query&prop=value&Snowshoe_hare&format=json
+
+//vv Note that the TextExtracts extension must be installed on the wiki in order to use this method. To see if it is installed, go to Special:Version on the wiki you are targeting.
+//https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=10&exlimit=1&titles=Snowshoe_hare&explaintext=1&formatversion=2 
+
+//http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=Showshoe_hare
+
+//Get the part of the article you want as HTML. It's much easier to strip HTML than to strip wikitext!
+//http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvsection=0&titles=Snowshoe_hare&rvprop=content
+
+//"https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm + "&format=json&callback=?";
+//https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=
+
+
+function searchWiki (rabbit) {
+    if (rabbit.includes(" ")) {
+      rabbit.replaceAll(" ", "%20"); 
+      //let newRabbit = rabbit.replace(/" "/gi, '%20') //why doesnt this work?
+      }
+   const endpoint = `https://en.wikipedia.org/w/api.php?action=query&origin=*&list=search&srsearch=${rabbit}&format=json`
+   fetch(endpoint, {
+      method: 'get', 
+      headers: {
+         "Content-Type": "application/json", 
+      }
+   })
+   .then(function(response) {
+      return response.json();
+   })
+   .then(function(data) {
+      for (let key in data) {
+            let secondKey = data[key];
+               for (let key in secondKey) {
+                 if (key === "search") {
+                    let search = secondKey[key];
+                    //array of objects containing more objects
+                     search.map(item => {
+                       for (let key in item) {
+                          if (key === "title") {
+                             let title = item[key]; 
+                             if (title.toLowerCase() === rabbit.toLowerCase()) {
+                                console.log(item)
+                             }
+                          }
+                       }
+                    })
+                   }
+               }  
+      }
+   })
+}
+//how do i narrow down to only exact matches returned? 
+// for (let key in data) {
+//    let secondKey = data[key]
+//     for (let key in secondKey) {
+//       let thirdKey = secondKey[key]
+//       for (let key in thirdKey) { 
+//          let searchData = thirdKey[key];
+//              if (searchData.title === rabbit) {
+//               console.log(searchData)
+//            }
+//        }
+// }
+// }
+//clean that up with a while loop??
+//when we get to the key that is an array, we break out of loop
+
+   
