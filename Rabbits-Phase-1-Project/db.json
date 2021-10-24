@@ -4,71 +4,61 @@
       "id": 1,
       "species": "Snowshoe Hare",
       "region": "Midwest",
-      "color": ["Brown and white", "Brown", "Mostly white"],
+      "color": ["Brown and white", "Brown", "White/mostly white", "Grayish brown"],
       "size": "Small",
       "ears": ["Short upright", "Medium upright"],
-      "coat": "[Agouti, Solid, Patchy]",
-      "eyes": "Black", 
-      "image": "URL" 
+      "coat": ["Agouti", "Solid", "Patchy"],
+      "eyes": ["Brown", "Black"]
     },
     {
       "id": 2,
       "species": "Marsh Rabbit",
-      "region": ["East", "Southeast", "South"],
-      "color": "Brown",
+      "region": ["Southeast", "Gulf Coast"],
+      "color": ["Brown", "Grayish brown"],
       "size": "Small",
       "ears": "Short upright",
-      "coat": "",
-      "eyes": "[]",
-      "image": "URL" 
-
+      "coat": ["Agouti", "Patchy"],
+      "eyes": ["Black", "Brown"]
     },
     {
       "id": 3,
       "species": "Swamp Rabbit",
-      "region": ["South Central", "Gulf Coast"],
-      "color": "Brown",
-      "size": "Small",
+      "region": ["Gulf Coast", "South Central", "Southeast"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Small", "Medium"],
       "ears": "Short upright",
-      "coat": "",
-      "eyes": [],
-      "image": "URL" 
-
+      "coat": ["Agouti", "Patchy"],
+      "eyes": ["Brown", "Black"]
     },
     {
       "id": 4,
       "species": "Eastern Cottontail",
-      "region": ["Northeast"],
-      "color": ["Brown", "Grayish brown"],
-      "size": "Small",
-      "ears": "Upright & short",
-      "coat": "Agouti",
-      "eyes": "Black",
-      "image": "URL" 
-
+      "region": ["Northeast", "East", "South Central", "Southeast"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Small"],
+      "ears": ["Short upright", "Medium upright"],
+      "coat": ["Agouti", "Patchy"],
+      "eyes": ["Brown", "Black"]
     },
     {
       "id": 5,
-      "species": "Western Cottontail",
-      "region": "West", 
-      "color": ["Brown/gray", "Brown"],
-      "size": "Small",
-      "ears": "Upright & medium",
-      "coat": "Agouti",
-      "eyes": "Black", 
-      "image": "URL" 
-
+      "species": "Desert Cottontail",
+      "region": ["West", "Midwest", "Southwest", "South", "Pacific Coast"],
+      "color": ["Grayish brown", "Brown", "Brown and white"],
+      "size": ["Small", "Medium"],
+      "ears": ["Tall upright", "Medium upright"],
+      "coat": ["Agouti", "Patchy"],
+      "eyes": ["Black", "Brown"] 
     },
     {
       "id": 6,
       "species": "New England Cottontail",
-      "region": "Midwest",
-      "color": ["Brown/gray", "Brown"],
-      "size": "Small",
-      "ears": "Medium upright",
-      "coat": "Agouti",
-      "eyes": "Black",
-      "image": "URL" 
+      "region": "Northeast",
+      "color": ["Grayish brown", "Brown", "Brown and white"],
+      "size": ["Small", "Medium"],
+      "ears": ["Short upright", "Medium upright"],
+      "coat": ["Agouti", "Patchy"],
+      "eyes": ["Brown", "Black"]
     },
     {
       "id": 7,
@@ -78,63 +68,97 @@
       "ears": ["Floppy", "Short upright", "Medium upright", "Tall upright", "Medium upright w/black tips"],
       "eyes": ["Blue", "Brown", "Black", "Red/pink"],
       "coat": ["Solid, Agouti, Patchy, Spotted, Other markings"],
-      "region": [],
-      "image": ""
+      "region": []
     },
     {
       "id": 8,
       "species": "Prairie Jackrabbit",
-      "region": ["Central", "West"],
-      "color": ["Grayish brown", "Brown"],
-      "size": "Large",
+      "region": ["Midwest", "West", "South"],
+      "color": ["Grayish brown", "Brown", "Brown and white"],
+      "size": ["Medium", "Large"],
       "ears": "Tall upright",
-      "coat": "Agouti",
-      "eyes": "Brown",
-      "image": "URL"
+      "coat": ["Agouti", "Patchy"],
+      "eyes": "Brown"
     },
     {
       "id": 9,
       "species": "Pygmy Rabbit",
       "region": ["West", "Midwest"],
-      "color": "Grayish brown",
-      "size": "Tiny",
-      "ears": "Short upright",
-      "coat": "Solid",
-      "eyes": ["Black", "Brown"],
-      "image": "URL"
+      "color": ["Grayish brown", "Gray"],
+      "size": "Small",
+      "ears": ["Short upright", "Medium upright"],
+      "coat": ["Solid", "Agouti"],
+      "eyes": ["Black", "Brown"]
     },
     {
       "id": 10,
       "species": "White-tailed Jackrabbit",
-      "region": "West",
-      "color": ["Brown", "Grayish brown", "Brown and White"],
-      "size": "Large",
-      "ears": "Upright & tall",
-      "coat": "Agouti",
-      "eyes": "Brown",
-      "image": "URL"
+      "region": ["West", "Southwest"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Large"],
+      "ears": "Tall upright",
+      "coat": ["Agouti", "Patchy"],
+      "eyes": "Brown"
     },
     {
       "id": 11,
       "species": "Black-tailed Jackrabbit",
-      "region": "Southwest",
-      "color": ["Brown", "Grayish brown", "Brown & white"],
-      "size": "Large",
-      "ears": "Upright & tall",
-      "coat": "Agouti",
-      "eyes": "Brown",
-      "image": "URL"
+      "region": ["West", "Southwest", "South"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Large"],
+      "ears": "Tall upright",
+      "coat": ["Patchy", "Agouti"],
+      "eyes": "Brown"
     },
     {
       "id": 12,  
-      "species": "White sided Jackrabbit",
-      "region": "Southwest",
-      "color": ["Brown", "Grayish brown", "Brown & white"],
-      "size": "Large",
+      "species": "White-sided Jackrabbit",
+      "region": ["West", "Southwest"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Large"],
       "ears": "Tall upright",
-      "coat": "Agouti",
-      "eyes": "Brown",
-      "image": "URL"
+      "coat": ["Patchy", "Agouti"],
+      "eyes": "Brown"
+    },
+    {
+      "id": 13,
+      "species": "Robust Cottontail",
+      "region": ["South Central"],
+      "color": ["Brown", "Gray", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Small"],
+      "ears": "Medium upright",
+      "coat": ["Patchy", "Agouti"],
+      "eyes": ["Black", "Brown"]
+    },
+    {
+      "id": 14,
+      "species": "Brush Rabbit",
+      "region": ["Pacific Coast"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Small"],
+      "ears": ["Medium upright", "Short upright"],
+      "coat": ["Patchy", "Agouti"],
+      "eyes": ["Black", "Brown"]
+    },
+    {
+      "id": 15,
+      "species": "Appalachian Cottontail",
+      "region": ["East", "Northeast", "Southeast"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Small"],
+      "ears": "Medium upright",
+      "coat": ["Patchy", "Agouti"],
+      "eyes": ["Black", "Brown"]
+    },
+    {
+      "id": 16,
+      "species": "Mountain Cottontail",
+      "region": ["West", "Midwest", "Northwest"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Small"],
+      "ears": ["Medium upright"],
+      "coat": ["Patchy", "Agouti"],
+      "eyes": ["Black", "Brown"]
     }
   ]
 }
