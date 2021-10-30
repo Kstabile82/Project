@@ -1,0 +1,53 @@
+
+body {
+    background-color: rgb(241, 245, 184);
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 100vh;
+}
+.bunnypic {
+    display: block;
+    width: 100%;
+}
+div {
+    color:#008000; 
+    display: inline-block;
+    width: 100%;
+
+}
+#container {
+    display: inline-block;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    text-align: center;
+}
+.category {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: inline;
+}
+btn, button {
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+}
+select {
+    width: 300px;
+    height: 30px;
+    font-size:16pt;
+    display: inline-block;
+    text-align: center;
+
+}
+p {
+    width: 1000px;
+    display: inline-block;
+}

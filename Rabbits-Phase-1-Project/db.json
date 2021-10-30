@@ -14,8 +14,8 @@
       "id": 2,
       "species": "Marsh Rabbit",
       "region": ["Southeast", "Gulf Coast"],
-      "color": ["Brown", "Grayish brown"],
-      "size": "Small",
+      "color": ["Brown", "Brown and white", "Grayish brown"],
+      "size": ["Small", "Medium"],
       "ears": "Short upright",
       "coat": ["Agouti", "Patchy"],
       "eyes": ["Black", "Brown"]
@@ -26,7 +26,7 @@
       "region": ["Gulf Coast", "South Central", "Southeast"],
       "color": ["Brown", "Grayish brown", "Brown and white"],
       "size": ["Small", "Medium"],
-      "ears": "Short upright",
+      "ears": ["Short upright", "Medium upright"],
       "coat": ["Agouti", "Patchy"],
       "eyes": ["Brown", "Black"]
     },
@@ -123,7 +123,7 @@
     {
       "id": 13,
       "species": "Robust Cottontail",
-      "region": ["South Central"],
+      "region": ["South"],
       "color": ["Brown", "Gray", "Grayish brown", "Brown and white"],
       "size": ["Medium", "Small"],
       "ears": "Medium upright",

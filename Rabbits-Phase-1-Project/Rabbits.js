@@ -3,8 +3,7 @@ let inputObj = {
 let matchArr = []; 
 let button = document.createElement('btn');
 let collection = document.getElementsByTagName('select');
-let rabbitfinder = document.getElementById("rabbit finder");
-let domesticStr = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and is at risk. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
+let domesticStr = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and needs help. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
 
 document.addEventListener('DOMContentLoaded', () => {
    getInput();
@@ -20,13 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
       while (rabbitmatches.firstChild) {
          rabbitmatches.removeChild(rabbitmatches.firstChild);
       }
-      button.innerText = " "
+      //button.innerText = " "
+      button.remove();
    })
 })
 
 function errorMessage()  {    
    if (Object.keys(inputObj).length < collection.length ) {
-      console.log("Please make sure you complete all the fields."); 
+      alert("Please make sure you complete all the fields."); 
    }
    else {
       document.getElementById("rabbitform").style.display="none";   
@@ -36,7 +36,9 @@ function errorMessage()  {
 
 function eliminators(inputObj) {
    if (inputObj["ears"] === "Floppy" || inputObj["color"] === "Other" || inputObj["eyes"] === "Red/pink" || inputObj["eyes"] === "Blue" || inputObj["coat"] === "Spotted"){
-      console.log(domesticStr);
+      let p = document.createElement("p");
+      p.innerText = domesticStr;
+      document.getElementById("rabbit matches").appendChild(p);
       resetForm(); 
    }
    else {
@@ -75,7 +77,6 @@ function returnMatches(rabbits) {
      matchArr.push(match["species"])
    })
    renderRabbit(matchArr)
-    //try linking the above and then doing if(eyeMatch && regionMatch && earMatch && colorMatch && coatMatch) push rabbit into matchArr
 }   
 
 function getInput() {
@@ -90,26 +91,31 @@ function getInput() {
 
 function renderRabbit(matchArr) { 
    inputObj = {}; 
+   let matchString = "We found multiple match possibilities: "; 
+   let p = document.createElement("p");
+   document.getElementById("rabbit matches").appendChild(p);
+   p.innerText = `We've got a match! ${matchArr}.`
    if (matchArr.length === 1) { 
-      console.log(`We've got a match! ${matchArr}.`)
+      p.innerText = `We've got a match! ${matchArr}.`
       searchNature(matchArr[0]);
    }
    else if (matchArr.length > 1) {
-      let matchString = "We found multiple match possibilities: "; 
+      p.innerText = matchString; 
       matchArr.map(idx => {
          searchNature(idx);
-         //iterate through matchArr
          if (matchArr.indexOf(idx) === matchArr.length-1) {
-            matchString += "and " + idx + ".";
-            //identifies whether it's the last. 
-            console.log(matchString);
+            p.innerText += " and " + idx + ". However, some domestic rabbits have similar features to wild species. If none of these pictures closely resemble what you see, it could be a domestic rabbit, in which case we recommend reaching out to your local animal rescues to see if they can further identify and help get it to safety. ";
          }
          else {
-            matchString += `${idx}, `
-            //else just continue adding idx to the string.
+           p.innerText += ` ${idx}, `
          }
       })
    }
+   else if (matchArr.length === 0) {
+      p.innerText = "No matches came up in our search, so it sounds like you are looking at a domestic rabbit that needs help, and suggest that you reach out to a local animal rescue group. But just in case, do you want to see a listing of all wild rabbit species that are found in your area so that you can compare?"
+      //showWildButton(); 
+   }
+
    resetForm();
 }
 
@@ -127,6 +133,7 @@ function searchNature(idx) {
       let div = document.createElement('div')
       let header = document.createElement('h3')
       let p = document.createElement('p')
+   
       rabbitmatches.appendChild(div)
       header.innerText = data.results[0].preferred_common_name; 
       div.id = `${data.results[0].preferred_common_name}`
@@ -142,6 +149,7 @@ function searchNature(idx) {
 }
 
 function resetForm() {
+   //move all button stuff to here including global var declaration
    let rabbitfinder = document.getElementById("rabbit finder");
    rabbitfinder.appendChild(button)
    button.innerText = "Reset Form"
@@ -149,14 +157,19 @@ function resetForm() {
    matchArr = []; 
 }
 
-   // let container = document.getElementById("container");
-   //document.getElementById('rabbitform').reset();
-   // div.innerHTML = " ";
-   // img.remove();
-   // button.remove();
-   // container.style.display = "block";
-//})
-   
+function showWildButton() {
+   //make this a cable box
+   let wildButton = document.createElement("btn"); 
+   wildButton.innerText = "Yes"; 
+   let noButton = document.document.createElement("btn"); 
+   noButton.innerText = "No"; 
+   document.getElementById("rabbit matches").appendChild(wildButton);
+   document.getElementById("rabbit matches").appendChild(noButton);
+   document.addEventListener(wildButton)
+   //if noButton, resetForm(); 
+   //if yesButton, push all region matches into matchArr and call searchNature 
+}
+
    //   let div = document.createElement('div')
    //   document.getElementById("rabbit finder").appendChild(div)
    //   let iframe = document.createElement('iframe')
