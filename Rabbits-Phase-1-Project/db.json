@@ -23,7 +23,7 @@
     {
       "id": 3,
       "species": "Swamp Rabbit",
-      "region": ["Gulf Coast", "South Central", "Southeast"],
+      "region": ["Gulf Coast", "South", "Southeast"],
       "color": ["Brown", "Grayish brown", "Brown and white"],
       "size": ["Small", "Medium"],
       "ears": ["Short upright", "Medium upright"],
@@ -33,7 +33,7 @@
     {
       "id": 4,
       "species": "Eastern Cottontail",
-      "region": ["Northeast", "East", "South Central", "Southeast"],
+      "region": ["Northeast", "East", "South", "Southeast"],
       "color": ["Brown", "Grayish brown", "Brown and white"],
       "size": ["Medium", "Small"],
       "ears": ["Short upright", "Medium upright"],

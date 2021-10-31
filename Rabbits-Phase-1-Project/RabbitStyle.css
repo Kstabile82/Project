@@ -49,5 +49,15 @@ select {
 }
 p {
     width: 1000px;
-    display: inline-block;
+    display: block;
+}
+label {
+    font-size: 30px;
+    margin-right: 50px; 
+    padding: 10px;
+
+}
+input[type=radio] {
+    transform: scale(2);
+
 }
