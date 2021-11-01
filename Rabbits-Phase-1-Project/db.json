@@ -5,7 +5,7 @@
       "species": "Snowshoe Hare",
       "region": "Midwest",
       "color": ["Brown and white", "Brown", "White/mostly white", "Grayish brown"],
-      "size": "Small",
+      "size": ["Small", "Medium"],
       "ears": ["Short upright", "Medium upright"],
       "coat": ["Agouti", "Solid", "Patchy"],
       "eyes": ["Brown", "Black"]
@@ -62,13 +62,13 @@
     },
     {
       "id": 7,
-      "species": "Domestic Rabbit",
-      "color": ["Grayish brown", "Brown", "Mostly white", "Brown & white", "Other"],
-      "size": ["Tiny", "Small", "Medium", "Large", "Giant"],
-      "ears": ["Floppy", "Short upright", "Medium upright", "Tall upright", "Medium upright w/black tips"],
-      "eyes": ["Blue", "Brown", "Black", "Red/pink"],
-      "coat": ["Solid, Agouti, Patchy, Spotted, Other markings"],
-      "region": []
+      "species": "Mountain Cottontail",
+      "region": ["West", "Midwest", "Northwest"],
+      "color": ["Brown", "Grayish brown", "Brown and white"],
+      "size": ["Medium", "Small"],
+      "ears": ["Medium upright"],
+      "coat": ["Patchy", "Agouti"],
+      "eyes": ["Black", "Brown"]
     },
     {
       "id": 8,
@@ -147,16 +147,6 @@
       "color": ["Brown", "Grayish brown", "Brown and white"],
       "size": ["Medium", "Small"],
       "ears": "Medium upright",
-      "coat": ["Patchy", "Agouti"],
-      "eyes": ["Black", "Brown"]
-    },
-    {
-      "id": 16,
-      "species": "Mountain Cottontail",
-      "region": ["West", "Midwest", "Northwest"],
-      "color": ["Brown", "Grayish brown", "Brown and white"],
-      "size": ["Medium", "Small"],
-      "ears": ["Medium upright"],
       "coat": ["Patchy", "Agouti"],
       "eyes": ["Black", "Brown"]
     }

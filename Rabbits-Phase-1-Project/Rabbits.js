@@ -1,37 +1,54 @@
 let inputObj = {
 }; 
+let inputArr = []; 
 let matchArr = []; 
 let button = document.createElement('btn');
 let collection = document.getElementsByTagName('select');
 
 document.addEventListener('DOMContentLoaded', () => {
-   getInput();
-   document.getElementById('rabbitform').addEventListener('submit', (e) => {
-       e.preventDefault(); 
-       errorMessage(); 
-   })    
+    getInput();
+    document.getElementById('rabbitform').addEventListener('submit', (e) => {
+      e.preventDefault(); 
+      errorMessage(); 
+  })    
 })
 
-function errorMessage()  {    
-   if (Object.keys(inputObj).length < collection.length ) {
-      alert("Please make sure you complete all the fields."); 
+function errorMessage()  {  
+   let collectionArray = []; 
+   if (Object.keys(inputObj).length < collection.length) {
+      let collectionVals = Object.values(collection);
+      for (let key in collectionVals) {
+         let collectionIds = collectionVals[key].id;
+         collectionArray.push(collectionIds.toLowerCase());
+         collectionArray.map(idx => {
+            inputArr.map(ind => {
+               if (idx === ind) {
+                  collectionArray.splice(idx, 1); 
+                  }
+            })
+         })
+      }
+      alert("Oops! Looks like you forgot to complete these fields: " + collectionArray.join(", ").toUpperCase())
    }
    else {
       document.getElementById("rabbitform").style.display="none";   
       eliminators(inputObj);
-      } 
+   }
 }
 
 function eliminators(inputObj) {
+   document.getElementById("instructions").style.display = "none";
    if (inputObj["ears"] === "Floppy" || inputObj["color"] === "Other" || inputObj["eyes"] === "Red/pink" || inputObj["eyes"] === "Blue" || inputObj["coat"] === "Spotted"){
       let p = document.createElement("p");
       p.innerText = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and needs help. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
       document.getElementById("rabbit matches").appendChild(p);
       resetForm(); 
+      showRescues(inputObj);
    }
    else {
       getRabbits();
    }
+   document.getElementById("rabbit finder").innerText = ""
 }
 
 function getRabbits() {
@@ -43,11 +60,11 @@ function getRabbits() {
 }
 
 function categoryTest(category, inputObj, rabbits) {
-     let matches = rabbits.filter(function(rabbit) {
+     let rabbitFilter = rabbits.filter(function(rabbit) {
       return rabbit[category] === inputObj[category] || rabbit[category].includes(inputObj[category])
    })
-      // can i do this instead of returnMatches below, and use recursion? Base case would be: matches = rabbits.length? or 0? 
-   return matches; 
+      // can i do this instead of returnMatches below, and use recursion? Base case would be: rabbit = rabbits.length? 
+   return rabbitFilter; //call categorytest on it? need a for loop? for key in inputObj, call rabbitFilter, then call it on return value
 }
 
 function returnMatches(rabbits) {
@@ -78,20 +95,20 @@ function returnMatches(rabbits) {
 function getInput() {
    for (let i = 0; i < collection.length; i++) {
          let category = collection[i];
-         category.addEventListener("change", function () { 
+         category.addEventListener("change", function (e) { 
          let input = category.options[category.selectedIndex].value;
+         inputArr.push(e.target.id);
          inputObj[`${category.id}`] = input;
      })
    }
-} 
+}
 
 function renderRabbit(matchArr, rabbits) { 
    let matchString = "We found multiple match possibilities: "; 
    let p = document.createElement("p");
    document.getElementById("rabbit matches").appendChild(p);
-   p.innerText = `We've got a match! ${matchArr}.`
    if (matchArr.length === 1) { 
-      p.innerText = `We've got a match! ${matchArr}.`
+      p.innerText = `We've got a match! ${matchArr}. However, some domestic rabbits have similar features to wild species. If this doesn't closely resemble what you see, it could be a domestic rabbit, in which case we recommend reaching out to your local animal rescues to see if they can further identify and help get it to safety.`;
       searchNature(matchArr[0]);
    }
    else if (matchArr.length > 1) {
@@ -162,6 +179,8 @@ function homePage() {
          rabbitmatches.removeChild(rabbitmatches.firstChild);
       }
       button.remove();
+      document.getElementById("instructions").style.display = "block";
+
 }
 
 function showWildButton(inputObj, rabbits) {
@@ -183,23 +202,25 @@ function showWildButton(inputObj, rabbits) {
    let noLabel = document.createElement('label');
    noLabel.textContent = "No";
    radioForm.appendChild(noLabel);
+   listenForWildButton(inputObj, rabbits, radioForm); 
+}
+function listenForWildButton(inputObj, rabbits, radioForm) {
    radioForm.addEventListener('change', (e) => {
       e.preventDefault();
       if (e.target.value === 'yes') {
          showWildRabbits(inputObj, rabbits); 
+         radioForm.remove(); 
       }
       else {
-         homePage();
+         radioForm.remove();
+         document.querySelector('p').innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
+         //showRescues(inputObj); 
       }
    })
 }
 
 function showWildRabbits(inputObj, rabbits) {
-//    let regionMatch = rabbits.filter(function (rabbit) {
-//       return rabbit.region === inputObj.region || rabbit.region.includes(inputObj.region)  
-//    })
    let regionMatch = categoryTest("region", inputObj, rabbits); 
-   console.log(regionMatch); 
      regionMatch.filter(match => {
          matchArr.push(match["species"])
        })  
@@ -207,19 +228,21 @@ function showWildRabbits(inputObj, rabbits) {
       searchNature(idx);
 })
 }
-
-   //   let div = document.createElement('div')
-   //   document.getElementById("rabbit finder").appendChild(div)
-   //   let iframe = document.createElement('iframe')
-   //   iframe.width = "600";
-   //   iframe.height = "400"
-   //   iframe.src = data
-   // document.getElementById("rabbit finder").appendChild(iframe);
-   //div.innerHTML = data.results[0].preferred_common_name; 
-
-//FLICKR
-//Key: d9416fc65dae6717c665c2db49b1580e
-//Secret: 472cc1aaf8a2a2bb
+function showRescues() {
+   let searchDiv = document.createElement('div');
+   let res = document.querySelector('p');
+   res.appendChild(searchDiv);
+    let iframe = document.createElement('iframe')
+     iframe.width = "1000";
+     iframe.height = "400"
+     iframe.src = `https://www.google.com/search?igu=1&q=rabbit+rescues+near+me&source=hp&ei=KcR-YbPlItW5qtsP78eA-AE&iflsig=ALs-wAMAAAAAYX7SOfU8JyStKUoVixiJMCcck3XlrAZg&oq=rabbit+rescues+near+me&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMkDMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOhQILhCABBCxAxCDARDHARCjAhCTAjoICAAQgAQQsQM6CAguEIAEELEDOgUIABCABDoLCC4QgAQQxwEQ0QM6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoICAAQsQMQgwE6DgguEIAEEMcBENEDEJMCOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQgwEQkwI6BQguELEDOgsILhCABBDHARCvAToLCC4QgAQQsQMQkwI6BQgAEJIDOgUILhCABDoFCAAQhgNQugxYzC9gujFoAnAAeACAAYEBiAGiD5IBBDE5LjWYAQCgAQGwAQA&sclient=gws-wiz&ved=0ahUKEwjznc3liPXzAhXVnGoFHe8jAB8Q4dUDCAo&uact=5&output=embed`;
+     searchDiv.appendChild(iframe);
+   // fetch("https://cse.google.com/cse.js?cx=703119836a0e2cdc6") 
+   // .then(response => response.json()) 
+   // .then(data => {
+   //    iframe.src = data;
+   // })
+}
 
 // function filterFunc(rabbits) {
 // //could also convert each rabbit to array using Object.entries(rabbit).slice() and slice off first 2 and last idx, and convert inputObj, and compare...loop through array, if idx 1 isArray, use the conditionals below
@@ -262,16 +285,3 @@ function showWildRabbits(inputObj, rabbits) {
 //"https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm + "&format=json&callback=?";
 //https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=
 
-//how do i narrow down to only exact matches returned? 
-// for (let key in data) {
-//    let secondKey = data[key]
-//     for (let key in secondKey) {
-//       let thirdKey = secondKey[key]
-//       for (let key in thirdKey) { 
-//          let searchData = thirdKey[key];
-//              if (searchData.title === rabbit) {
-//               console.log(searchData)
-//            }
-//        }
-// }
-// }

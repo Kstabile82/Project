@@ -14,7 +14,15 @@ div {
     color:#008000; 
     display: inline-block;
     width: 100%;
+    font-size: 20px;
 
+}
+#instructions {
+    display: inline-block;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    text-align: center;
 }
 #container {
     display: inline-block;
@@ -45,7 +53,6 @@ select {
     font-size:16pt;
     display: inline-block;
     text-align: center;
-
 }
 p {
     width: 1000px;
@@ -55,9 +62,7 @@ label {
     font-size: 30px;
     margin-right: 50px; 
     padding: 10px;
-
 }
 input[type=radio] {
     transform: scale(2);
-
 }
