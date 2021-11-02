@@ -14,31 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function errorMessage()  {  
+   let errorArr = []; 
    let collectionArray = []; 
-   if (Object.keys(inputObj).length < collection.length) {
+   //if (Object.keys(inputObj).length < collection.length) { 
       let collectionVals = Object.values(collection);
-      for (let key in collectionVals) {
-         let collectionIds = collectionVals[key].id; //i dont think we need this variable
+      collectionVals.map(val => {
+         let collectionIds = val.id; 
          collectionArray.push(collectionIds.toLowerCase()); 
-         // collectionArray.map(idx => {
-         //    if (inputArr.includes(idx) !== true) {
-         //       collectionArray.splice(idx, 1);
-         //    }
-         // })
-         collectionArray.map(idx => {
-            inputArr.map(ind => {
-               if (idx === ind) {
-                  collectionArray.splice(idx, 1); 
-                  }
-            })
-         })
+      })      
+      collectionArray.map(idx => { //going through collection array for each index, check to see if inputarray includes that index. if it doesnt, push that index into error
+            if (inputArr.includes(idx) === false) {
+               errorArr.push(idx)
+         }
+      })
+      if (errorArr.length > 0) {
+         alert("Oops! Looks like you forgot to complete these fields: " + errorArr.join(", ").toUpperCase())
       }
-      alert("Oops! Looks like you forgot to complete these fields: " + collectionArray.join(", ").toUpperCase())
-   }
    else {
       document.getElementById("rabbitform").style.display="none";   
       eliminators(inputObj);
    }
+
 }
 
 function eliminators(inputObj) {
@@ -104,6 +100,7 @@ function getInput() {
          inputObj[`${category.id}`] = input;
      })
    }
+   console.log(inputArr);
 }
 
 function renderRabbit(matchArr, rabbits) { 
