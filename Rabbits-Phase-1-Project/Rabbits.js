@@ -18,8 +18,13 @@ function errorMessage()  {
    if (Object.keys(inputObj).length < collection.length) {
       let collectionVals = Object.values(collection);
       for (let key in collectionVals) {
-         let collectionIds = collectionVals[key].id;
-         collectionArray.push(collectionIds.toLowerCase());
+         let collectionIds = collectionVals[key].id; //i dont think we need this variable
+         collectionArray.push(collectionIds.toLowerCase()); 
+         // collectionArray.map(idx => {
+         //    if (inputArr.includes(idx) !== true) {
+         //       collectionArray.splice(idx, 1);
+         //    }
+         // })
          collectionArray.map(idx => {
             inputArr.map(ind => {
                if (idx === ind) {
@@ -39,11 +44,9 @@ function errorMessage()  {
 function eliminators(inputObj) {
    document.getElementById("instructions").style.display = "none";
    if (inputObj["ears"] === "Floppy" || inputObj["color"] === "Other" || inputObj["eyes"] === "Red/pink" || inputObj["eyes"] === "Blue" || inputObj["coat"] === "Spotted"){
-      let p = document.createElement("p");
-      p.innerText = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and needs help. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
-      document.getElementById("rabbit matches").appendChild(p);
       resetForm(); 
-      showRescues(inputObj);
+      document.getElementById("rescues").innerText = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and needs help. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
+      showRescues(); //why is this not clearing like it does in the radio form? 
    }
    else {
       getRabbits();
@@ -59,13 +62,13 @@ function getRabbits() {
    })
 }
 
-function categoryTest(category, inputObj, rabbits) {
-     let rabbitFilter = rabbits.filter(function(rabbit) {
-      return rabbit[category] === inputObj[category] || rabbit[category].includes(inputObj[category])
-   })
-      // can i do this instead of returnMatches below, and use recursion? Base case would be: rabbit = rabbits.length? 
-   return rabbitFilter; //call categorytest on it? need a for loop? for key in inputObj, call rabbitFilter, then call it on return value
-}
+// function categoryTest(category, inputObj, rabbits) {
+//     rabbits.filter(function(rabbit) {
+//       return rabbit[category] === inputObj[category] || rabbit[category].includes(inputObj[category])
+//    })
+//       // can i do this instead of returnMatches below, and use recursion? Base case would be: rabbit = rabbits.length? 
+//      // categoryTest(rabbitFilter); //call categorytest on it? need a for loop? for key in inputObj, call rabbitFilter, then call it on return value
+// }
 
 function returnMatches(rabbits) {
    let eyeMatch = rabbits.filter(function (rabbit) {
@@ -104,6 +107,7 @@ function getInput() {
 }
 
 function renderRabbit(matchArr, rabbits) { 
+   resetForm();
    let matchString = "We found multiple match possibilities: "; 
    let p = document.createElement("p");
    document.getElementById("rabbit matches").appendChild(p);
@@ -127,7 +131,6 @@ function renderRabbit(matchArr, rabbits) {
       p.innerText = "No matches came up in our search, so it sounds like you are looking at a domestic rabbit that needs help, and suggest that you reach out to a local animal rescue group. But just in case, do you want to see a listing of all wild rabbit species that are found in your area so that you can compare?"
       showWildButton(inputObj, rabbits); 
    }
-   resetForm();
 }
 
 function searchNature(idx) {
@@ -180,7 +183,7 @@ function homePage() {
       }
       button.remove();
       document.getElementById("instructions").style.display = "block";
-
+      document.getElementById("rescues").style.display = "none";
 }
 
 function showWildButton(inputObj, rabbits) {
@@ -204,23 +207,29 @@ function showWildButton(inputObj, rabbits) {
    radioForm.appendChild(noLabel);
    listenForWildButton(inputObj, rabbits, radioForm); 
 }
+
 function listenForWildButton(inputObj, rabbits, radioForm) {
    radioForm.addEventListener('change', (e) => {
       e.preventDefault();
       if (e.target.value === 'yes') {
          showWildRabbits(inputObj, rabbits); 
          radioForm.remove(); 
+         document.getElementById("rabbit matches").firstChild.remove();
       }
       else {
+         console.log('no')
          radioForm.remove();
-         document.querySelector('p').innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
-         //showRescues(inputObj); 
+         document.getElementById("rabbit matches").firstChild.remove();
+         document.getElementById("rescues").innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
+         showRescues(); 
       }
    })
 }
 
 function showWildRabbits(inputObj, rabbits) {
-   let regionMatch = categoryTest("region", inputObj, rabbits); 
+   let regionMatch = rabbits.filter(function(rabbit) {
+      return rabbit["region"] === inputObj["region"] || rabbit["region"].includes(inputObj["region"])
+   })
      regionMatch.filter(match => {
          matchArr.push(match["species"])
        })  
@@ -228,21 +237,17 @@ function showWildRabbits(inputObj, rabbits) {
       searchNature(idx);
 })
 }
+
 function showRescues() {
    let searchDiv = document.createElement('div');
-   let res = document.querySelector('p');
-   res.appendChild(searchDiv);
-    let iframe = document.createElement('iframe')
+   document.getElementById("rescues").appendChild(searchDiv);
+   let iframe = document.createElement('iframe')
      iframe.width = "1000";
-     iframe.height = "400"
-     iframe.src = `https://www.google.com/search?igu=1&q=rabbit+rescues+near+me&source=hp&ei=KcR-YbPlItW5qtsP78eA-AE&iflsig=ALs-wAMAAAAAYX7SOfU8JyStKUoVixiJMCcck3XlrAZg&oq=rabbit+rescues+near+me&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMkDMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOhQILhCABBCxAxCDARDHARCjAhCTAjoICAAQgAQQsQM6CAguEIAEELEDOgUIABCABDoLCC4QgAQQxwEQ0QM6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoICAAQsQMQgwE6DgguEIAEEMcBENEDEJMCOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQgwEQkwI6BQguELEDOgsILhCABBDHARCvAToLCC4QgAQQsQMQkwI6BQgAEJIDOgUILhCABDoFCAAQhgNQugxYzC9gujFoAnAAeACAAYEBiAGiD5IBBDE5LjWYAQCgAQGwAQA&sclient=gws-wiz&ved=0ahUKEwjznc3liPXzAhXVnGoFHe8jAB8Q4dUDCAo&uact=5&output=embed`;
+     iframe.height = "400";
      searchDiv.appendChild(iframe);
-   // fetch("https://cse.google.com/cse.js?cx=703119836a0e2cdc6") 
-   // .then(response => response.json()) 
-   // .then(data => {
-   //    iframe.src = data;
-   // })
-}
+     iframe.src = "https://www.google.com/search?igu=1&q=rabbit+rescues+near+me&source=hp&ei=KcR-YbPlItW5qtsP78eA-AE&iflsig=ALs-wAMAAAAAYX7SOfU8JyStKUoVixiJMCcck3XlrAZg&oq=rabbit+rescues+near+me&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMkDMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOhQILhCABBCxAxCDARDHARCjAhCTAjoICAAQgAQQsQM6CAguEIAEELEDOgUIABCABDoLCC4QgAQQxwEQ0QM6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoICAAQsQMQgwE6DgguEIAEEMcBENEDEJMCOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQgwEQkwI6BQguELEDOgsILhCABBDHARCvAToLCC4QgAQQsQMQkwI6BQgAEJIDOgUILhCABDoFCAAQhgNQugxYzC9gujFoAnAAeACAAYEBiAGiD5IBBDE5LjWYAQCgAQGwAQA&sclient=gws-wiz&ved=0ahUKEwjznc3liPXzAhXVnGoFHe8jAB8Q4dUDCAo&uact=5&output=embed)"
+     resetForm();
+   }
 
 // function filterFunc(rabbits) {
 // //could also convert each rabbit to array using Object.entries(rabbit).slice() and slice off first 2 and last idx, and convert inputObj, and compare...loop through array, if idx 1 isArray, use the conditionals below
