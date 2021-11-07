@@ -16,55 +16,46 @@ document.addEventListener('DOMContentLoaded', () => {
 function errorMessage()  {  
    let errorArr = []; 
    let collectionArray = []; 
-   //if (Object.keys(inputObj).length < collection.length) { 
       let collectionVals = Object.values(collection);
       collectionVals.map(val => {
          let collectionIds = val.id; 
          collectionArray.push(collectionIds.toLowerCase()); 
       })      
-      collectionArray.map(idx => { //going through collection array for each index, check to see if inputarray includes that index. if it doesnt, push that index into error
-            if (inputArr.includes(idx) === false) {
+      collectionArray.map(idx => { 
+         if (inputArr.includes(idx) === false) {
                errorArr.push(idx)
          }
       })
       if (errorArr.length > 0) {
          alert("Oops! Looks like you forgot to complete these fields: " + errorArr.join(", ").toUpperCase())
       }
-   else {
-      document.getElementById("rabbitform").style.display="none";   
-      eliminators(inputObj);
-   }
-
+      else {
+         document.getElementById("rabbitform").style.display="none";   
+         eliminators(inputObj);
+      }
 }
 
 function eliminators(inputObj) {
    document.getElementById("instructions").style.display = "none";
    if (inputObj["ears"] === "Floppy" || inputObj["color"] === "Other" || inputObj["eyes"] === "Red/pink" || inputObj["eyes"] === "Blue" || inputObj["coat"] === "Spotted"){
-      resetForm(); 
+      document.getElementById("rescues").style.display="block"
       document.getElementById("rescues").innerText = "Based on your input, it sounds like you are looking at a domestic rabbit that's been abandoned and needs help. Please try reaching out to an animal rescue local to your area to see if they can determine and get it to safety."
-      showRescues(); //why is this not clearing like it does in the radio form? 
+      showRescues(); 
    }
    else {
       getRabbits();
    }
    document.getElementById("rabbit finder").innerText = ""
+   resetForm();
 }
 
 function getRabbits() {
    fetch("http://localhost:3000/rabbits") 
    .then(response => response.json()) 
    .then(rabbits => {
-      returnMatches(rabbits)
+     returnMatches(rabbits)
    })
 }
-
-// function categoryTest(category, inputObj, rabbits) {
-//     rabbits.filter(function(rabbit) {
-//       return rabbit[category] === inputObj[category] || rabbit[category].includes(inputObj[category])
-//    })
-//       // can i do this instead of returnMatches below, and use recursion? Base case would be: rabbit = rabbits.length? 
-//      // categoryTest(rabbitFilter); //call categorytest on it? need a for loop? for key in inputObj, call rabbitFilter, then call it on return value
-// }
 
 function returnMatches(rabbits) {
    let eyeMatch = rabbits.filter(function (rabbit) {
@@ -100,7 +91,6 @@ function getInput() {
          inputObj[`${category.id}`] = input;
      })
    }
-   console.log(inputArr);
 }
 
 function renderRabbit(matchArr, rabbits) { 
@@ -173,14 +163,14 @@ function homePage() {
    inputObj = {}; 
    matchArr = []; 
    document.getElementById("rabbitform").reset();
-      document.getElementById("rabbitform").style.display="block" 
-      let rabbitmatches = document.getElementById("rabbit matches");
+   let rabbitmatches = document.getElementById("rabbit matches");
       while (rabbitmatches.firstChild) {
          rabbitmatches.removeChild(rabbitmatches.firstChild);
       }
-      button.remove();
-      document.getElementById("instructions").style.display = "block";
-      document.getElementById("rescues").style.display = "none";
+   button.remove();
+   document.getElementById("instructions").style.display = "block";
+   document.getElementById("rescues").style.display = "none";
+   document.getElementById("rabbitform").style.display="block" 
 }
 
 function showWildButton(inputObj, rabbits) {
@@ -214,7 +204,6 @@ function listenForWildButton(inputObj, rabbits, radioForm) {
          document.getElementById("rabbit matches").firstChild.remove();
       }
       else {
-         console.log('no')
          radioForm.remove();
          document.getElementById("rabbit matches").firstChild.remove();
          document.getElementById("rescues").innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
@@ -243,7 +232,7 @@ function showRescues() {
      iframe.height = "400";
      searchDiv.appendChild(iframe);
      iframe.src = "https://www.google.com/search?igu=1&q=rabbit+rescues+near+me&source=hp&ei=KcR-YbPlItW5qtsP78eA-AE&iflsig=ALs-wAMAAAAAYX7SOfU8JyStKUoVixiJMCcck3XlrAZg&oq=rabbit+rescues+near+me&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMkDMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOhQILhCABBCxAxCDARDHARCjAhCTAjoICAAQgAQQsQM6CAguEIAEELEDOgUIABCABDoLCC4QgAQQxwEQ0QM6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoICAAQsQMQgwE6DgguEIAEEMcBENEDEJMCOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQgwEQkwI6BQguELEDOgsILhCABBDHARCvAToLCC4QgAQQsQMQkwI6BQgAEJIDOgUILhCABDoFCAAQhgNQugxYzC9gujFoAnAAeACAAYEBiAGiD5IBBDE5LjWYAQCgAQGwAQA&sclient=gws-wiz&ved=0ahUKEwjznc3liPXzAhXVnGoFHe8jAB8Q4dUDCAo&uact=5&output=embed)"
-     resetForm();
+   resetForm();
    }
 
 // function filterFunc(rabbits) {
@@ -270,20 +259,37 @@ function showRescues() {
 //    })
 // }
 
-//https://en.wikipedia.org/w/api.php?action=query&prop=value&. .& format=json
-//. . srsearch=Craig%20Noone indicates the page title or content to search for. The %20 indicates a space character in a URL.
-//If you want plain text only, use TextExtracts: http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&explaintext=1&titles=Unix
-//https://en.wikipedia.org/wiki/Snowshoe_hare
-//https://en.wikipedia.org/w/api.php?action=query&prop=value&Snowshoe_hare&format=json
-
-//vv Note that the TextExtracts extension must be installed on the wiki in order to use this method. To see if it is installed, go to Special:Version on the wiki you are targeting.
-//https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=10&exlimit=1&titles=Snowshoe_hare&explaintext=1&formatversion=2 
-
-//http://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles=Showshoe_hare
-
-//Get the part of the article you want as HTML. It's much easier to strip HTML than to strip wikitext!
-//http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvsection=0&titles=Snowshoe_hare&rvprop=content
-
-//"https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm + "&format=json&callback=?";
-//https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=
-
+// function matchesFirstLevel(rabbits, category) {
+//    let misMatchArr = []; 
+//    let matchRabbitArr = []; 
+//    if (category = "undefined") {
+//       let categoryArr = []; 
+//          for (let key in inputObj) {
+//             categoryArr.push(key) 
+//             categoryArr.filter(category => matchesNextLevel(category))
+//          }
+//    }
+//    else {
+//       matchesNextLevel(category)
+//    }
+//    function matchesNextLevel(category) {
+//    rabbits.filter(function (rabbit) {
+//       for (let key in rabbit) {
+//          if (category === key) {
+//             if (typeof rabbit[key] == "string" && inputObj[category] != rabbit[key]) {
+//               misMatchArr.push(rabbit["species"])
+//             }
+//             else if (typeof rabbit[key] == "object" && !Array.from(rabbit[key]).includes(inputObj[category])) {
+//                misMatchArr.push(rabbit["species"])
+//             }
+//          }
+//       }
+//       if (!misMatchArr.includes(rabbit["species"])) {
+//        matchRabbitArr.push(rabbit["species"]);
+//       }
+//     })   
+//    }
+//    let set = new Set(matchRabbitArr)
+//    matchArr = Array.from(set)
+//    renderRabbit(matchArr, rabbits)
+// }
