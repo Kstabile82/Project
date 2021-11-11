@@ -47,6 +47,10 @@ btn, button {
     font-size: 20px;
 
 }
+#resetbutton {
+    display: none;
+}
+
 select {
     width: 300px;
     height: 30px;

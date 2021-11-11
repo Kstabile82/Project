@@ -2,32 +2,29 @@ let inputObj = {
 }; 
 let inputArr = []; 
 let matchArr = []; 
-let button = document.createElement('btn');
-let collection = document.getElementsByTagName('select');
 
 document.addEventListener('DOMContentLoaded', () => {
     getInput();
-    document.getElementById('rabbitform').addEventListener('submit', (e) => {
+    document.addEventListener('submit', (e) => {
       e.preventDefault(); 
-      errorMessage(); 
+      if (e.target.matches("#rabbitform")) {
+         errorMessage(e); 
+      }
   })    
+  document.getElementById("resetbutton").addEventListener("click", (e) => {
+   e.preventDefault();
+   homePage(); 
+  })
 })
 
-function errorMessage()  {  
-   let errorArr = []; 
-   let collectionArray = []; 
-      let collectionVals = Object.values(collection);
-      collectionVals.map(val => {
-         let collectionIds = val.id; 
-         collectionArray.push(collectionIds.toLowerCase()); 
-      })      
-      collectionArray.map(idx => { 
-         if (inputArr.includes(idx) === false) {
-               errorArr.push(idx)
-         }
-      })
-      if (errorArr.length > 0) {
-         alert("Oops! Looks like you forgot to complete these fields: " + errorArr.join(", ").toUpperCase())
+function errorMessage(e)  {  
+   let holder = Array.from(e.target).map(ele => {
+      if (ele.value === "holder") {
+         return ele.id; 
+      }
+   }).filter(h => h)
+      if (holder.length > 0) {
+         alert("Oops! Looks like you forgot to complete these fields: " + holder.join(", ").toUpperCase())
       }
       else {
          document.getElementById("rabbitform").style.display="none";   
@@ -36,6 +33,7 @@ function errorMessage()  {
 }
 
 function eliminators(inputObj) {
+   resetForm();
    document.getElementById("instructions").style.display = "none";
    if (inputObj["ears"] === "Floppy" || inputObj["color"] === "Other" || inputObj["eyes"] === "Red/pink" || inputObj["eyes"] === "Blue" || inputObj["coat"] === "Spotted"){
       document.getElementById("rescues").style.display="block"
@@ -45,8 +43,8 @@ function eliminators(inputObj) {
    else {
       getRabbits();
    }
-   document.getElementById("rabbit finder").innerText = ""
-   resetForm();
+   // document.getElementById("rabbitfinder").innerText = ""
+   // resetForm();
 }
 
 function getRabbits() {
@@ -83,6 +81,7 @@ function returnMatches(rabbits) {
 }   
 
 function getInput() {
+   let collection = document.getElementsByTagName('select');
    for (let i = 0; i < collection.length; i++) {
          let category = collection[i];
          category.addEventListener("change", function (e) { 
@@ -94,10 +93,10 @@ function getInput() {
 }
 
 function renderRabbit(matchArr, rabbits) { 
-   resetForm();
+   // resetForm();
    let matchString = "We found multiple match possibilities: "; 
    let p = document.createElement("p");
-   document.getElementById("rabbit matches").appendChild(p);
+   document.getElementById("rabbitmatches").appendChild(p);
    if (matchArr.length === 1) { 
       p.innerText = `We've got a match! ${matchArr}. However, some domestic rabbits have similar features to wild species. If this doesn't closely resemble what you see, it could be a domestic rabbit, in which case we recommend reaching out to your local animal rescues to see if they can further identify and help get it to safety.`;
       searchNature(matchArr[0]);
@@ -121,7 +120,7 @@ function renderRabbit(matchArr, rabbits) {
 }
 
 function searchNature(idx) {
-   let rabbitmatches = document.getElementById("rabbit matches");
+   let rabbitmatches = document.getElementById("rabbitmatches");
    if (idx.includes(" ")) {
            idx.replaceAll(" ", "%20"); 
       }
@@ -150,24 +149,17 @@ function searchNature(idx) {
 }
 
 function resetForm() {
-   let rabbitfinder = document.getElementById("rabbit finder");
-   rabbitfinder.appendChild(button)
-   button.innerText = "Reset Form"
-   button.addEventListener("click", (e) => {
-      e.preventDefault();
-      homePage(); 
-   })
+ document.getElementById("resetbutton").style.display = "inline-block";
 } 
 
 function homePage() {
    inputObj = {}; 
    matchArr = []; 
    document.getElementById("rabbitform").reset();
-   let rabbitmatches = document.getElementById("rabbit matches");
+   let rabbitmatches = document.getElementById("rabbitmatches");
       while (rabbitmatches.firstChild) {
          rabbitmatches.removeChild(rabbitmatches.firstChild);
       }
-   button.remove();
    document.getElementById("instructions").style.display = "block";
    document.getElementById("rescues").style.display = "none";
    document.getElementById("rabbitform").style.display="block" 
@@ -175,7 +167,7 @@ function homePage() {
 
 function showWildButton(inputObj, rabbits) {
    let radioForm = document.createElement("form");
-   document.getElementById("rabbit matches").appendChild(radioForm);
+   document.getElementById("rabbitmatches").appendChild(radioForm);
    let yesButton = document.createElement("input"); 
    yesButton.type = "radio";
    yesButton.name = "wildBunnies"
@@ -201,11 +193,11 @@ function listenForWildButton(inputObj, rabbits, radioForm) {
       if (e.target.value === 'yes') {
          showWildRabbits(inputObj, rabbits); 
          radioForm.remove(); 
-         document.getElementById("rabbit matches").firstChild.remove();
+         document.getElementById("rabbitmatches").firstChild.remove();
       }
       else {
          radioForm.remove();
-         document.getElementById("rabbit matches").firstChild.remove();
+         document.getElementById("rabbitmatches").firstChild.remove();
          document.getElementById("rescues").innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
          showRescues(); 
       }
@@ -232,7 +224,7 @@ function showRescues() {
      iframe.height = "400";
      searchDiv.appendChild(iframe);
      iframe.src = "https://www.google.com/search?igu=1&q=rabbit+rescues+near+me&source=hp&ei=KcR-YbPlItW5qtsP78eA-AE&iflsig=ALs-wAMAAAAAYX7SOfU8JyStKUoVixiJMCcck3XlrAZg&oq=rabbit+rescues+near+me&gs_lcp=Cgdnd3Mtd2l6EAMyCAgAEIAEEMkDMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeOhQILhCABBCxAxCDARDHARCjAhCTAjoICAAQgAQQsQM6CAguEIAEELEDOgUIABCABDoLCC4QgAQQxwEQ0QM6DgguEIAEELEDEMcBENEDOgsILhCABBDHARCjAjoICAAQsQMQgwE6DgguEIAEEMcBENEDEJMCOg4ILhCABBCxAxDHARCjAjoOCC4QgAQQsQMQgwEQkwI6BQguELEDOgsILhCABBDHARCvAToLCC4QgAQQsQMQkwI6BQgAEJIDOgUILhCABDoFCAAQhgNQugxYzC9gujFoAnAAeACAAYEBiAGiD5IBBDE5LjWYAQCgAQGwAQA&sclient=gws-wiz&ved=0ahUKEwjznc3liPXzAhXVnGoFHe8jAB8Q4dUDCAo&uact=5&output=embed)"
-   resetForm();
+   // resetForm();
    }
 
 // function filterFunc(rabbits) {
