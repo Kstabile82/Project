@@ -43,8 +43,6 @@ function eliminators(inputObj) {
    else {
       getRabbits();
    }
-   // document.getElementById("rabbitfinder").innerText = ""
-   // resetForm();
 }
 
 function getRabbits() {
@@ -196,10 +194,10 @@ function listenForWildButton(inputObj, rabbits, radioForm) {
          document.getElementById("rabbitmatches").firstChild.remove();
       }
       else {
-         radioForm.remove();
-         document.getElementById("rabbitmatches").firstChild.remove();
          document.getElementById("rescues").innerText = "Okay, here are some rabbit rescue search results to help you connect with one in your area:"; 
+         radioForm.remove();
          showRescues(); 
+         document.getElementById("rabbitmatches").firstChild.remove();
       }
    })
 }
@@ -218,6 +216,7 @@ function showWildRabbits(inputObj, rabbits) {
 
 function showRescues() {
    let searchDiv = document.createElement('div');
+   document.getElementById("rescues").style.display = "inline-block"
    document.getElementById("rescues").appendChild(searchDiv);
    let iframe = document.createElement('iframe')
      iframe.width = "1000";
